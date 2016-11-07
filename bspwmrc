@@ -1,0 +1,46 @@
+#!/bin/sh
+
+sxhkd &
+
+bspc config click_to_focus	true
+
+bspc config border_width        2
+bspc config focused_border_color "#a98900"
+bspc config window_gap		20
+
+bspc config top_padding		24
+
+bspc config split_ratio         0.50
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+bspc config focus_by_distance   true
+
+bspc monitor -d I II III IV V VI VII VIII IX # X XI XII
+
+bspc config external_rules_command `which external_rules.sh`
+
+bspc rule -a Gimp desktop=^8 follow=on floating=on
+bspc rule -a Chromium desktop=^2
+bspc rule -a mplayer2 floating=on
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a feh state=floating
+bspc rule -a steam state=floating
+bspc rule -a PCSX2 state=floating
+bspc rule -a PCSX state=floating
+
+compton -b &
+
+#export PATH=$PATH:~/bar &
+#~/.config/bspwm/./lemonMaker.sh | lemonbar -g "1880x22+20+20" -B "#221100" -p &
+#yabar
+
+# bar
+xfce4-panel &
+#~/.config/bspwm/./lemonMaker.sh  | lemonbar -g 1920x24+0+0 -u 4 -U "#009900" &
+
+# wallpapers
+#feh --bg-fill ~/Pictures/Desktop\ Backgrounds/swordAndSworcery.png &
+#feh --bg-fill ~/Pictures/Desktop\ Backgrounds/aw5LcGZ.jpg & # Purple grid 
+ feh --bg-fill ~/Pictures/Landscape\ Pictures/ArrivingAtAntarctica.jpg &
+
