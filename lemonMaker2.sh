@@ -4,6 +4,10 @@
 VOID_GREEN1="478061"
 VOID_GREEN2="abc2ab"
 
+# Declare Bar Styles
+FC0="%{F#ffffff}"
+FC1="%{F#$VOID_GREEN2}"
+
 GREY1="#ababab"
 GREY1="#6b6b6b"
 
@@ -14,14 +18,18 @@ circle2=""	# Filled
 
 workSpaces="unset"
 getWorkSpaces() {
+	# Why do I use xprop, if bspc functions work just as well?
 	WS=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
-	if   [ $WS = "0" ]; then	echo -e "       "
-	elif [ $WS = "1" ]; then	echo -e "       "
-	elif [ $WS = "2" ]; then	echo -e "       "
-	elif [ $WS = "3" ]; then	echo -e "       "
-	elif [ $WS = "4" ]; then	echo -e "       "
-	elif [ $WS = "5" ]; then	echo -e "       "
-	else						echo -e "       "
+	if   [ $WS = "0" ]; then	echo -e "$FC1  $FC0        " 
+	elif [ $WS = "1" ]; then	echo -e "          " 
+	elif [ $WS = "2" ]; then	echo -e "          " 
+	elif [ $WS = "3" ]; then	echo -e "          " 
+	elif [ $WS = "4" ]; then	echo -e "          " 
+	elif [ $WS = "5" ]; then	echo -e "          " 
+	elif [ $WS = "6" ]; then	echo -e "          " 
+	elif [ $WS = "7" ]; then	echo -e "          " 
+	elif [ $WS = "8" ]; then	echo -e "         " 
+	else						echo -e "Outside the Universe"
 	fi
 }
 
@@ -35,6 +43,7 @@ getWorkSpaces() {
 #
 #}
 #
+
 music="unset"
 getMusic() {
 	band=$(audtool current-song-tuple-data artist)
@@ -79,7 +88,7 @@ while true; do
 	fi
 
 
-	echo -e " Zenbook $workSpaces $music $msec $currentTime "
+	echo -e "%{B#$VOID_GREEN1} Zenbook $workSpaces %{c} $music %{r} $currentTime "
 	sleep 0.08
 done
 
