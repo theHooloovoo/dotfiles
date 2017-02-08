@@ -6,6 +6,8 @@ bspc config click_to_focus	true
 
 bspc config border_width        2
 bspc config focused_border_color "#a98900"
+bspc config normal_border_color "#0a0a0a"
+
 bspc config window_gap		20
 
 bspc config top_padding		24
@@ -17,30 +19,36 @@ bspc config focus_by_distance   true
 
 bspc monitor -d I II III IV V VI VII VIII IX # X XI XII
 
-bspc config external_rules_command `which external_rules.sh`
-
-bspc rule -a Gimp desktop=^8 follow=on floating=on
+bspc rule -a Gimp floating=on follow=on 
 bspc rule -a Chromium desktop=^2
 bspc rule -a mplayer2 floating=on
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a feh state=floating
-bspc rule -a steam state=floating
+bspc rule -a audacious state=floating
+bspc rule -a Steam state=floating
 bspc rule -a PCSX2 state=floating
 bspc rule -a PCSX state=floating
+bspc rule -a dolphin-emu state=floating
 
-compton -b &
+# Use this to grab width and height of focused window
+# xwininfo -id $(bspc query -N -n focused) | awk '/(Width)|(Height)/ {print $2}'
+bspc rule -a external_rules_command $(~/.config/bspwm/./splitRule.sh)
 
-#export PATH=$PATH:~/bar &
-#~/.config/bspwm/./lemonMaker.sh | lemonbar -g "1880x22+20+20" -B "#221100" -p &
-#yabar
 
-# bar
-xfce4-panel &
-#~/.config/bspwm/./lemonMaker.sh  | lemonbar -g 1920x24+0+0 -u 4 -U "#009900" &
+# Use xlsfonts to get font names
+siji="-f '-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1'"
+font1="-misc-fixed-medium-r-normal--9-90-75-75-c-60-iso8859-10"
+font2="-misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso8859-13"
+font3="-schumacher-clean-medium-r-normal--14-140-75-75-c-70-iso646.1991-irv"
+
+~/.config/bspwm/./lemonMaker.sh | lemonbar -g "1880x22+20+0" -B "#221100" -p &
+
+compton -i 0.94 -b &
 
 # wallpapers
 #feh --bg-fill ~/Pictures/Desktop\ Backgrounds/swordAndSworcery.png &
 #feh --bg-fill ~/Pictures/Desktop\ Backgrounds/aw5LcGZ.jpg & # Purple grid 
- feh --bg-fill ~/Pictures/Landscape\ Pictures/ArrivingAtAntarctica.jpg &
+#feh --bg-fill ~/Pictures/Landscape\ Pictures/ArrivingAtAntarctica.jpg &
+ feh --bg-fill ~/Music/Barishi/2016\ Blood\ from\ the\ Lions\ Mouth/cover.jpg
 

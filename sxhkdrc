@@ -1,5 +1,5 @@
-#
-# bspwm hotkeys
+# =============================
+# bspwm hotkeys ===============
 #
 
 super + alt + Escape
@@ -16,8 +16,8 @@ super + f
 super + d
 	bspc node -t ~floating	# tiles window
 
-#super + {grave,Tab}
-#	bspc {window,desktop} -f last		#Selects the previously selected window
+super + {grave,Tab}
+	bspc {window,desktop} -f last		#Selects the previously selected window
 
 #super + apostrophe
 #	bspc window -s last	#Swaps current window with previously selected window
@@ -63,7 +63,6 @@ super + shift + bracket{left,right}
 super + ctrl {h,l}
 	bspc node @focused:parent -R {270,90}
 
-
 # Preselect
 super + alt + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
@@ -98,23 +97,24 @@ super + !button{1-3}
 super + @button{1-3}
 	bspc pointer -u
 
-#
-# wm independent hotkeys
-#
+# ============================
+# wm independent hotkeys =====
 
 # --- Volume ---------
 #XF86AudioRaiseVolume
 super + period
-	amixer -D pulse sset Master 10%+
+	amixer -D pulse sset Master 5%+
 
 #XF86AudioLowerVolume
 super + comma
-	amixer -D pulse sset Master 10%-
+	amixer -D pulse sset Master 5%-
 
 #XF86AudioMute
 super + m
 	amixer -D pulse sset Master toggle
 
+super + /
+	audtool --playback-playpause
 
 # --- Launchers ---------
 super + Return
@@ -123,8 +123,13 @@ super + Return
 super + shift + Return
 	urxvt
  
+ctrl + alt + t
+	xfce4-terminal
+
 super + space
 	dmenu_run	#Launches dmenu	(or at least it should)
+#super + space
+#	rofi
 
 super + w
 	firefox
@@ -136,9 +141,15 @@ ctrl + alt + f
 	thunar
 
 super + v
-	feh  -g 1160x725+736+288 ~/Pictures/vimCheatSheet.png
+	feh  -g 1160x725+736+332 ~/Pictures/vimCheatSheet.png
 
 # --- Reload bspwm ---------
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# Restart wifi service
+super + shift + ctrl + alt + w
+	sudo service network-manager restart
+
+
