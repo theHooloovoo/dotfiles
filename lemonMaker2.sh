@@ -21,14 +21,14 @@ getWorkSpaces() {
 	# Why do I use xprop, if bspc functions work just as well?
 	WS=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
 	if   [ $WS = "0" ]; then	echo -e "$FC1  $FC0        " 
-	elif [ $WS = "1" ]; then	echo -e "          " 
-	elif [ $WS = "2" ]; then	echo -e "          " 
-	elif [ $WS = "3" ]; then	echo -e "          " 
-	elif [ $WS = "4" ]; then	echo -e "          " 
-	elif [ $WS = "5" ]; then	echo -e "          " 
-	elif [ $WS = "6" ]; then	echo -e "          " 
-	elif [ $WS = "7" ]; then	echo -e "          " 
-	elif [ $WS = "8" ]; then	echo -e "         " 
+	elif [ $WS = "1" ]; then	echo -e "  $FC1 $FC0       " 
+	elif [ $WS = "2" ]; then	echo -e "   $FC1 $FC0      " 
+	elif [ $WS = "3" ]; then	echo -e "    $FC1 $FC0     " 
+	elif [ $WS = "4" ]; then	echo -e "     $FC1 $FC0    " 
+	elif [ $WS = "5" ]; then	echo -e "      $FC1 $FC0   " 
+	elif [ $WS = "6" ]; then	echo -e "       $FC1 $FC0  " 
+	elif [ $WS = "7" ]; then	echo -e "        $FC1 $FC0 " 
+	elif [ $WS = "8" ]; then	echo -e "         $FC1 $FC0" 
 	else						echo -e "Outside the Universe"
 	fi
 }
