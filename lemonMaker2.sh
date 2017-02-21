@@ -9,12 +9,47 @@ FC0="%{F#ffffff}"
 FC1="%{F#$VOID_GREEN2}"
 
 GREY1="#ababab"
-GREY1="#6b6b6b"
+GREY2="#6b6b6b"
 
 # Declare Symbols
 tune=""	# Siji Music symbol
 circle1=""	# Non-filled
 circle2=""	# Filled
+
+
+F_E=' $red"f"$GREY1'
+F_O=' $red"F"$GREY1'
+U_E=' u'
+U_O=' U'
+getWorkSpaces2() {
+	CURRENT_WS=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+	WS=""
+
+	# Iterate through desktops
+	for n in 1 2 3 4 5 6 7 8 9
+	do
+		# Check if workspace is focused
+		if	[[ $CURRENT_WS = $((n - 1)) ]]; then
+			if	[[ -z $(bspc query -T -d ^$n | grep '"root":null') ]]; then
+				# And occupied
+				WS=$WS" "$F_O
+			else
+				# Or empty
+				WS=$WS" "$F_E
+			fi
+		else
+			# If not Focused
+			if	[[ -z $(bspc query -T -d ^$n | grep '"root":null') ]]; then
+				# And occupied
+				WS=$WS" "$U_O
+			else
+				# Or empty
+				WS=$WS" "$U_E
+			fi
+		fi
+	done
+	echo $WS
+}
 
 workSpaces="unset"
 getWorkSpaces() {
@@ -79,7 +114,7 @@ while true; do
 	msec=$(date +%1N)
 
 	# continuously refresh variable
-	workSpaces="$(getWorkSpaces)"
+	workSpaces="$(getWorkSpaces2)"
 
 	# Refresh variables every 1 second
 	if (( $msec == 0 )); then
