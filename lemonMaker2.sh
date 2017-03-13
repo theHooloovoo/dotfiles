@@ -17,10 +17,10 @@ circle1=""	# Non-filled
 circle2=""	# Filled
 
 
-F_E=' $red"f"$GREY1'
-F_O=' $red"F"$GREY1'
-U_E=' u'
-U_O=' U'
+F_E=" "$FC0"%{F"$GREY1"}"
+F_O=" "$FC0"%{F"$GREY1"}"
+U_E=" "
+U_O=" "
 getWorkSpaces2() {
 	CURRENT_WS=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
 	WS=""
