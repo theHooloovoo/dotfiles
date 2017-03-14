@@ -1,0 +1,23 @@
+
+tune=""	# Siji Music symbol
+
+circle1=""	# Non-filled
+circle2=""	# Filled
+
+vol_headphone="" # siji
+vol_mute=""      # siji
+vol_low=""       # siji
+vol_high=""      # siji
+
+bat_000=""       # siji
+bat_010=""       # siji
+bat_020=""       # siji
+bat_030=""       # siji
+bat_040=""       # siji
+bat_050=""       # siji
+bat_060=""       # siji
+bat_070=""       # siji
+bat_080=""       # siji
+bat_090=""       # siji
+bat_charge=""    # siji
+
